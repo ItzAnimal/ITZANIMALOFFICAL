@@ -1,0 +1,475 @@
+/* Global defaults */
+:root {
+  --backgroundColor: #05070c;
+  --textColor: #f5f7fa;
+  --textMutedColor: rgba(245, 247, 250, 0.78);
+  --borderColor: rgba(245, 247, 250, 0.14);
+  --panelColor: rgba(10, 14, 24, 0.92);
+  --overlayColor: rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--backgroundColor);
+  color: var(--textColor);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+a {
+  color: var(--textColor);
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(245, 247, 250, 0.85);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Backdrop overlay behind side menu */
+.backdropOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--overlayColor);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+  z-index: 40;
+}
+
+body.menuIsOpen .backdropOverlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Side menu */
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(86vw, 380px);
+  background: var(--panelColor);
+  border-left: 1px solid rgba(245, 247, 250, 0.10);
+  transform: translateX(102%);
+  transition: transform 260ms ease;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  backdrop-filter: blur(8px);
+}
+
+body.menuIsOpen .sideMenu {
+  transform: translateX(0%);
+}
+
+.sideMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(245, 247, 250, 0.10);
+}
+
+.sideMenuTitle {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  font-size: 16px;
+}
+
+.sideMenuCloseButton {
+  border: 1px solid rgba(245, 247, 250, 0.20);
+  background: rgba(245, 247, 250, 0.06);
+  color: var(--textColor);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.sideMenuNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+}
+
+.sideMenuLink {
+  display: block;
+  padding: 14px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(245, 247, 250, 0.10);
+  background: rgba(245, 247, 250, 0.03);
+  font-weight: 650;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.sideMenuLink:hover {
+  background: rgba(245, 247, 250, 0.07);
+  border-color: rgba(245, 247, 250, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Prevent background scrolling when menu is open */
+body.menuIsOpen {
+  overflow: hidden;
+}
+
+/* Hero banner */
+.heroBanner {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-image: url("images/Spoti banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.heroBanner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  pointer-events: none;
+  z-index: 1;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.00) 0%,
+    rgba(5, 7, 12, 0.85) 70%,
+    rgba(5, 7, 12, 1.00) 100%
+  );
+}
+
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.25) 35%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+
+
+.heroOverlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.00) 55%,
+    rgba(0, 0, 0, 0.55) 82%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  padding: 18px 18px 34px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Top navigation row */
+.topNavigationRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+gap: 14px;
+}
+
+.siteTitleLink {
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(245, 247, 250, 0.14);
+}
+
+.topNavigationLinks {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(245, 247, 250, 0.14);
+}
+
+.topNavigationLink {
+  font-weight: 650;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-size: 13px;
+  opacity: 0.96;
+}
+
+.topNavigationSeparator {
+  opacity: 0.55;
+}
+
+/* Hamburger button */
+.hamburgerMenuButton {
+  border: 1px solid rgba(245, 247, 250, 0.14);
+  background: rgba(0, 0, 0, 0.18);
+  color: var(--textColor);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.hamburgerMenuLines {
+  display: inline-block;
+  width: 24px;
+  height: 14px;
+  position: relative;
+}
+
+.hamburgerMenuLines::before,
+.hamburgerMenuLines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(245, 247, 250, 0.92);
+  border-radius: 2px;
+}
+
+.hamburgerMenuLines::before {
+  top: 2px;
+}
+
+.hamburgerMenuLines::after {
+  bottom: 2px;
+}
+
+/* Center text */
+.heroCenterText {
+  position: absolute;
+  top: 24%;                 /* ← Moves it higher */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+
+.heroPrimaryText {
+  font-family: "Anton", sans-serif;
+
+  font-size: clamp(40px, 7vw, 78px);
+
+  letter-spacing: 0.15em;
+
+  color: #F5F7FA;
+
+  text-transform: none;
+}
+
+
+.heroSecondaryText {
+  margin-top: 10px;
+  font-size: clamp(14px, 2.6vw, 18px);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Scroll down arrow */
+.scrollDownArrowButton {
+  align-self: center;
+
+  border: none;
+  background: transparent;
+
+  padding: 12px;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  transition: opacity 220ms ease, transform 220ms ease;
+  margin-top: 18px;
+}
+
+
+.scrollDownArrowIcon {
+  display: inline-block;
+  font-size: 28px;
+  line-height: 1;
+  color: #F5F7FA;
+
+  animation: scrollArrowBob 1.9s ease-in-out infinite;
+}
+
+/* Arrow hides once the user scrolls */
+body.arrowShouldBeHidden .scrollDownArrowButton {
+  align-self: center;
+
+  border: none;
+  background: transparent;
+
+  padding: 12px;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  transition: opacity 220ms ease, transform 220ms ease;
+  margin-top: 18px;
+}
+
+@keyframes scrollArrowBob {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(7px); }
+  100% { transform: translateY(0px); }
+}
+
+/* About section */
+.aboutSection {
+  position: relative;
+  padding: 72px 18px;
+background: radial-gradient(
+    1200px 600px at 50% 0%,
+    rgba(38, 72, 140, 0.18),
+    rgba(5, 7, 12, 0.95)
+  );
+}
+
+
+.aboutSection::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 140px;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 7, 12, 1.00) 0%,
+    rgba(5, 7, 12, 0.00) 100%
+  );
+}
+
+.aboutSectionInner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.aboutPortraitFigure {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(245, 247, 250, 0.10);
+  background: rgba(245, 247, 250, 0.02);
+}
+
+.aboutPortraitImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.aboutTextBlock {
+  padding: 10px 2px;
+}
+
+.aboutHeading {
+  margin: 0 0 10px 0;
+  font-size: clamp(26px, 4vw, 34px);
+  letter-spacing: 0.6px;
+}
+
+.aboutSubheading {
+  font-weight: 600;
+  opacity: 0.72;
+  font-size: 0.62em;
+  letter-spacing: 0.8px;
+}
+
+.aboutParagraph {
+  margin: 0 0 12px 0;
+  color: var(--textMutedColor);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Footer */
+.siteFooter {
+  padding: 22px 18px 30px 18px;
+background: rgba(5, 7, 12, 0.98);
+}
+
+.siteFooterInner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.siteFooterText {
+  opacity: 0.7;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+}
+
+/* Desktop navigation shows on wider screens */
+@media (min-width: 860px) {
+  .topNavigationLinks {
+    display: flex;
+  }
+
+  .hamburgerMenuButton {
+    display: none;
+  }
+
+  .aboutSectionInner {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 28px;
+  }
+}

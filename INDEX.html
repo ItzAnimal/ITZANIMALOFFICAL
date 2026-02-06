@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ItzAnimal</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Backdrop overlay for the side menu -->
+  <button
+    class="backdropOverlay"
+    type="button"
+    aria-label="Close menu"
+    aria-hidden="true"
+  ></button>
+
+  <!-- Side sliding menu (mobile) -->
+  <aside class="sideMenu" aria-hidden="true" aria-label="Site navigation menu">
+    <div class="sideMenuHeader">
+      <div class="sideMenuTitle">ItzAnimal</div>
+      <button class="sideMenuCloseButton" type="button" aria-label="Close menu">
+        Close
+      </button>
+    </div>
+
+    <nav class="sideMenuNavigation" aria-label="Mobile navigation">
+      <a class="sideMenuLink" href="subpages/music/music.html">Music</a>
+      <a class="sideMenuLink" href="subpages/community/community.html">Community</a>
+      <a class="sideMenuLink" href="subpages/contact/contact.html">Contact</a>
+      <a class="sideMenuLink" href="subpages/merch/merch.html">Merch</a>
+    </nav>
+  </aside>
+
+  <!-- Hero banner -->
+  <header class="heroBanner" id="topOfPage">
+    <div class="heroOverlay"></div>
+
+    <div class="heroContent">
+      <div class="topNavigationRow">
+<!-- Desktop navigation -->
+        <nav class="topNavigationLinks" aria-label="Primary navigation">
+          <a class="topNavigationLink" href="subpages/music/music.html">Music</a>
+          <span class="topNavigationSeparator">|</span>
+          <a class="topNavigationLink" href="subpages/community/community.html">Community</a>
+          <span class="topNavigationSeparator">|</span>
+          <a class="topNavigationLink" href="subpages/contact/contact.html">Contact</a>
+          <span class="topNavigationSeparator">|</span>
+          <a class="topNavigationLink" href="subpages/merch/merch.html">Merch</a>
+        </nav>
+
+        <!-- Mobile hamburger button -->
+        <button
+          class="hamburgerMenuButton"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileNavigationMenu"
+        >
+          <span class="hamburgerMenuLines" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <!-- Optional hero text (kept minimal) -->
+      <div class="heroCenterText">
+  <div class="heroPrimaryText">ItzAnimal</div>
+</div>
+
+
+      <!-- Down arrow scroll hint -->
+      <button
+        class="scrollDownArrowButton"
+        type="button"
+        aria-label="Scroll to About section"
+      >
+        <span class="scrollDownArrowIcon" aria-hidden="true">⌄</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- About section -->
+  <main>
+    <section class="aboutSection" id="aboutSection">
+      <div class="aboutSectionInner">
+        <figure class="aboutPortraitFigure">
+          <img
+            class="aboutPortraitImage"
+            src="images/FD246015-4F1E-41A0-8077-CC7B54172B7C.png"
+            alt="Portrait of ItzAnimal"
+            loading="lazy"
+          />
+        </figure>
+
+        <div class="aboutTextBlock">
+          <h2 class="aboutHeading">ItzAnimal <span class="aboutSubheading">(Jeremy James)</span></h2>
+
+          <p class="aboutParagraph">
+            I make music about exploring and recognising my emotions I used to suppress.
+          </p>
+
+          <p class="aboutParagraph">
+            All I ask is people listen to my words, and what I have to say because this is my way of coping.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="siteFooter">
+    <div class="siteFooterInner">
+      <div class="siteFooterText">© ItzAnimal</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var aboutSectionElement = document.getElementById("aboutSection");
+      var scrollDownArrowButton = document.querySelector(".scrollDownArrowButton");
+      var hamburgerMenuButton = document.querySelector(".hamburgerMenuButton");
+      var sideMenuElement = document.querySelector(".sideMenu");
+      var backdropOverlayButton = document.querySelector(".backdropOverlay");
+      var closeMenuButton = document.querySelector(".sideMenuCloseButton");
+
+      function openMenu() {
+        document.body.classList.add("menuIsOpen");
+        hamburgerMenuButton.setAttribute("aria-expanded", "true");
+        sideMenuElement.setAttribute("aria-hidden", "false");
+        backdropOverlayButton.setAttribute("aria-hidden", "false");
+      }
+
+      function closeMenu() {
+        document.body.classList.remove("menuIsOpen");
+        hamburgerMenuButton.setAttribute("aria-expanded", "false");
+        sideMenuElement.setAttribute("aria-hidden", "true");
+        backdropOverlayButton.setAttribute("aria-hidden", "true");
+      }
+
+      function scrollToAboutSection() {
+        if (!aboutSectionElement) {
+          return;
+        }
+        aboutSectionElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function updateArrowVisibilityBasedOnScroll() {
+        var currentScrollPosition = window.scrollY || document.documentElement.scrollTop || 0;
+        var heroBannerElement = document.querySelector(".heroBanner");
+        var heroBannerHeight = heroBannerElement ? heroBannerElement.offsetHeight : 0;
+
+        if (heroBannerHeight > 0 && currentScrollPosition > heroBannerHeight * 0.15) {
+          document.body.classList.add("arrowShouldBeHidden");
+        } else {
+          document.body.classList.remove("arrowShouldBeHidden");
+        }
+      }
+
+      hamburgerMenuButton.addEventListener("click", openMenu);
+      closeMenuButton.addEventListener("click", closeMenu);
+      backdropOverlayButton.addEventListener("click", closeMenu);
+
+      scrollDownArrowButton.addEventListener("click", scrollToAboutSection);
+
+      window.addEventListener("scroll", updateArrowVisibilityBasedOnScroll, { passive: true });
+      window.addEventListener("resize", updateArrowVisibilityBasedOnScroll);
+
+      updateArrowVisibilityBasedOnScroll();
+
+      document.addEventListener("keydown", function (keyboardEvent) {
+        if (keyboardEvent.key === "Escape" && document.body.classList.contains("menuIsOpen")) {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
