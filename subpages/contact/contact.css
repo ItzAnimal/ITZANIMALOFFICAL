@@ -1,0 +1,241 @@
+body{
+  margin:0;
+  background:#05070c;
+  color:#F5F7FA;
+  font-family: system-ui, sans-serif;
+  padding-top:60px;
+}
+
+/* NAV */
+.subpageNavigationBar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 14px 22px;
+
+  background: rgba(5, 7, 12, 0.55);
+  border-bottom: 1px solid rgba(245, 247, 250, 0.10);
+  backdrop-filter: blur(12px);
+
+  z-index: 200;
+}
+
+.subpageHomeLink{
+  color: #F5F7FA;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.80;
+}
+
+.subpageHomeLink:hover{
+  opacity: 1;
+}
+
+.subpageNavigationLinks{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.subpageNavigationLink{
+  color: #F5F7FA;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.72;
+}
+
+.subpageNavigationLink:hover{
+  opacity: 1;
+}
+
+.subpageNavigationLink[aria-current="page"]{
+  opacity: 1;
+  border-bottom: 1px solid rgba(245, 247, 250, 0.35);
+  padding-bottom: 3px;
+}
+
+/* HERO */
+.contactHero{
+  position:relative;
+  height:45vh;
+  background:url("../../images/Spoti banner.png") center 35% / cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.contactHeroOverlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.85)
+  );
+}
+
+.contactHeroContent{
+  position:relative;
+  text-align:center;
+  padding: 0 18px;
+}
+
+.contactHeroTitle{
+  font-family:"Anton", sans-serif;
+  font-size: clamp(40px,6vw,70px);
+  letter-spacing:0.15em;
+  margin:0;
+}
+
+.contactHeroSubtitle{
+  opacity:0.85;
+  margin-top:12px;
+}
+
+/* SECTION */
+.contactSection{
+  max-width: 1100px;
+  margin: auto;
+  padding: 70px 18px 100px 18px;
+}
+
+/* CARDS */
+.infoCard{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:24px;
+  margin-bottom:26px;
+  backdrop-filter:blur(10px);
+}
+
+.noticeCard{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+/* ACCORDION */
+.accordion{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.accordionItem{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  backdrop-filter:blur(10px);
+  overflow:hidden;
+}
+
+.accordionSummary{
+  list-style:none;
+  cursor:pointer;
+  padding:18px 20px;
+
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+
+  font-size:16px;
+}
+
+.accordionItem summary::-webkit-details-marker{
+  display:none;
+}
+
+.accordionHint{
+  font-size:13px;
+  opacity:0.75;
+}
+
+.accordionBody{
+  padding: 0 20px 20px 20px;
+}
+
+/* FORM */
+.contactForm{
+  margin-top: 14px;
+}
+
+.fieldRow{
+  display:flex;
+  gap:16px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:14px;
+  flex:1;
+}
+
+label{
+  font-size:13px;
+  opacity:0.85;
+}
+
+input, select, textarea{
+  background: rgba(0,0,0,0.30);
+  border: 1px solid rgba(245,247,250,0.14);
+  color:#F5F7FA;
+
+  border-radius: 10px;
+  padding: 12px 12px;
+
+  outline:none;
+}
+
+textarea{
+  resize: vertical;
+}
+
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(245,247,250,0.35);
+}
+
+.submitButton{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(245,247,250,0.16);
+
+  color:#F5F7FA;
+  cursor:pointer;
+
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.submitButton:hover{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(245,247,250,0.28);
+}
+
+.formNote{
+  margin-top: 12px;
+  opacity: 0.7;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+  .fieldRow{
+    flex-direction:column;
+  }
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | ItzAnimal</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+<header class="subpageNavigationBar">
+  <a class="subpageHomeLink" href="../../index.html">Home</a>
+
+  <nav class="subpageNavigationLinks" aria-label="Page navigation">
+    <a class="subpageNavigationLink" href="../music/music.html">Music</a>
+    <a class="subpageNavigationLink" href="../community/community.html">Community</a>
+    <a class="subpageNavigationLink" href="../contact/contact.html" aria-current="page">Contact</a>
+    <a class="subpageNavigationLink" href="../merch/merch.html">Merch</a>
+  </nav>
+</header>
+
+<section class="contactHero">
+  <div class="contactHeroOverlay"></div>
+
+  <div class="contactHeroContent">
+    <h1 class="contactHeroTitle">Contact</h1>
+    <p class="contactHeroSubtitle">
+      Send an enquiry and I will get back to you when I can.
+    </p>
+  </div>
+</section>
+
+<section class="contactSection">
+
+  <div class="infoCard">
+    <h2>ItzAnimal Enquiries</h2>
+    <p>
+    For all enquiries, use the forms below!</p>
+  </div>
+
+  <div class="accordion">
+
+    <!-- GENERAL -->
+    <details class="accordionItem">
+      <summary class="accordionSummary">
+        General Enquiry
+        <span class="accordionHint">Questions, messages, anything</span>
+      </summary>
+
+      <div class="accordionBody">
+        <form class="contactForm" action="https://formspree.io/f/mreazreg" method="post">
+		<input type="hidden" name="enquiryType" value="General">
+          <div class="fieldRow">
+            <div class="field">
+              <label for="generalName">Name</label>
+              <input id="generalName" name="generalName" type="text" placeholder="Your name" required>
+            </div>
+
+            <div class="field">
+              <label for="generalEmail">Email</label>
+              <input id="generalEmail" name="generalEmail" type="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="generalMessage">Message</label>
+            <textarea id="generalMessage" name="generalMessage" rows="6" placeholder="Write your message here" required></textarea>
+          </div>
+
+          <button class="submitButton" type="submit">Send General Enquiry</button>
+
+          <p class="formNote">
+            Upon submission you will be redirected, this is completely normal.
+          </p>
+
+        </form>
+      </div>
+    </details>
+
+    <!-- COLLABS -->
+    <details class="accordionItem">
+      <summary class="accordionSummary">
+        Collabs
+        <span class="accordionHint">Music features and creative work</span>
+      </summary>
+
+      <div class="accordionBody">
+        <div class="noticeCard">
+          <p>
+            I am selective with collabs. I may not respond to every request.
+            Please do not take it personally if I stop replying.
+          </p>
+        </div>
+
+        <form class="contactForm" action="https://formspree.io/f/xgolwroq" method="post">
+
+          <div class="fieldRow">
+            <div class="field">
+              <label for="collabName">Name</label>
+              <input id="collabName" name="collabName" type="text" placeholder="Your name" required>
+            </div>
+
+            <div class="field">
+              <label for="collabEmail">Email</label>
+              <input id="collabEmail" name="collabEmail" type="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="collabLink">Your page link</label>
+            <input id="collabLink" name="collabLink" type="url" placeholder="https://..." required>
+          </div>
+
+
+          <div class="field">
+            <label for="collabMessage">What do you want to work on</label>
+            <textarea id="collabMessage" name="collabMessage" rows="6" placeholder="Describe the song, style, and what you are looking for" required></textarea>
+          </div>
+
+          <button class="submitButton" type="submit">Send Collab Request</button>
+
+          <p class="formNote">
+            Upon submission you will be redirected, this is completely normal.
+          </p>
+
+        </form>
+      </div>
+    </details>
+
+    <!-- MERCH -->
+    <details id="merchRequest" class="accordionItem">
+      <summary class="accordionSummary">
+        Merch Request
+        <span class="accordionHint">Concept orders and custom requests</span>
+      </summary>
+
+      <div class="accordionBody">
+        <div class="noticeCard">
+          <p>
+            These items are early concept designs and may not be part of a full public release yet. If you are interested in purchasing a concept piece before official release, you can contact me to discuss availability, production, and shipping.
+          </p>
+          <p>
+            Early concept orders directly support future ItzAnimal releases and help decide which pieces move into full production.
+          </p>
+        </div>
+
+        <form class="contactForm" action="https://formspree.io/f/xkovwkol" method="post">
+
+          <div class="fieldRow">
+            <div class="field">
+              <label for="merchName">Name</label>
+              <input id="merchName" name="merchName" type="text" placeholder="Your name" required>
+            </div>
+
+            <div class="field">
+              <label for="merchEmail">Email</label>
+              <input id="merchEmail" name="merchEmail" type="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="fieldRow">
+            <div class="field">
+              <label for="merchCountry">Country</label>
+              <input id="merchCountry" name="merchCountry" type="text" placeholder="Country" required>
+            </div>
+
+            <div class="field">
+              <label for="merchItem">Which item</label>
+              <input id="merchItem" name="merchItem" type="text" placeholder="Example: Hoodie Concept A" required>
+            </div>
+          </div>
+
+          <div class="fieldRow">
+            <div class="field">
+              <label for="merchSize">Size</label>
+              <select id="merchSize" name="merchSize" required>
+                <option value="" selected>Select size</option>
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>2XL</option>
+                <option>3XL</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="merchSigned">Signed</label>
+              <select id="merchSigned" name="merchSigned" required>
+                <option value="" selected>Select option</option>
+                <option>No</option>
+                <option>Yes, signed please (adds $10)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="merchNotes">Extra notes</label>
+            <textarea id="merchNotes" name="merchNotes" rows="6" placeholder="Colours, placement, questions, anything important"></textarea>
+          </div>
+
+          <button class="submitButton" type="submit">Send Merch Request</button>
+
+          <p class="formNote">
+            Upon submission you will be redirected, this is completely normal.
+          </p>
+
+        </form>
+      </div>
+    </details>
+
+    <!-- PRESS -->
+    <details class="accordionItem">
+      <summary class="accordionSummary">
+        Media and Press
+        <span class="accordionHint">Interviews, articles, requests</span>
+      </summary>
+
+      <div class="accordionBody">
+        <form class="contactForm" action="https://formspree.io/f/xwvneale" method="post">
+
+          <div class="fieldRow">
+            <div class="field">
+              <label for="pressName">Name</label>
+              <input id="pressName" name="pressName" type="text" placeholder="Your name" required>
+            </div>
+
+            <div class="field">
+              <label for="pressEmail">Email</label>
+              <input id="pressEmail" name="pressEmail" type="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="fieldRow">
+            <div class="field">
+              <label for="pressOrganisation">Organisation</label>
+              <input id="pressOrganisation" name="pressOrganisation" type="text" placeholder="Outlet, channel, brand">
+            </div>
+
+            <div class="field">
+              <label for="pressDeadline">Deadline</label>
+              <input id="pressDeadline" name="pressDeadline" type="text" placeholder="Optional">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="pressMessage">Request</label>
+            <textarea id="pressMessage" name="pressMessage" rows="6" placeholder="What do you need and what is the timeline" required></textarea>
+          </div>
+
+          <button class="submitButton" type="submit">Send Press Enquiry</button>
+
+          <p class="formNote">
+            Upon submission you will be redirected, this is completely normal.
+          </p>
+
+        </form>
+      </div>
+    </details>
+
+  </div>
+
+</section>
+<script src="contact.js"></script>
+
+</body>
+</html>
